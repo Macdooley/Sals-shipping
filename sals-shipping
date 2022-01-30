@@ -1,0 +1,51 @@
+weight = 0
+
+#Ground Shipping
+if weight > 0:
+  if weight <= 2.0:
+    ground_cost = (weight * 1.5) + 20
+  elif weight > 2 and weight <= 6:
+    ground_cost = (weight * 3) + 20
+  elif weight > 6 and weight <= 10:
+    ground_cost = (weight * 4) + 20
+  else:
+    ground_cost = (weight * 4.75) + 20
+else:
+  print("Please enter a valid weight.")
+
+#Premium Ground Shipping
+premium_ground_cost = 125.0
+
+#Drone Shipping
+if weight > 0:
+  if weight <= 2:
+    drone_cost = weight * 4.5
+  elif weight > 2 and weight <= 6:
+    drone_cost = weight * 9
+  elif weight >6 and weight <= 10:
+    drone_cost = weight * 12
+  else:
+    drone_cost = weight * 14.25
+
+#Display all options
+print("Your package would cost $", ground_cost, "by ground.")
+print("Your package would cost $", premium_ground_cost, "by premium ground")
+print("Your package would cost $", drone_cost, "by drone delivery")
+
+#Determining best price
+if drone_cost < ground_cost and drone_cost < premium_ground_cost:
+  print(f"\nYour best option will be to send it by drone, which will cost ${drone_cost}.")
+elif ground_cost < drone_cost and ground_cost < premium_ground_cost:
+  print(f"\nYour best option would be to send it by ground delivery which will cost ${ground_cost}.")
+elif premium_ground_cost < drone_cost and premium_ground_cost < ground_cost:
+  print(f"\nYour best option would be to send it by premium ground delivery which will cost ${premium_ground_cost}.")
+  
+#Costs are equal
+elif drone_cost == ground_cost:
+  print(f"\nYou can send it by drone or by ground, they both cost ${drone_cost}.")
+elif drone_cost == premium_ground_cost:
+  print(f"\nYou can send it by drone or by premium ground shipping, they both cost ${drone_cost}.")
+elif premium_ground_cost == ground_cost:
+  print(f"\nYou can send it by premium ground or regular ground shipping, they both cost ${premium_ground_cost}.")
+else:
+  print("Please hold, there has been an error and our customer service center is currently investigating :)")
